@@ -32,6 +32,8 @@ class NoStateDispenser(BaseStateDispenser):
         pass
     async def delete(self, peer_id: int) -> None:
         pass
+    async def cast(self, value):   # ← добавлен этот метод
+        return None
 
 bot = Bot(token=VK_TOKEN, state_dispenser=NoStateDispenser())
 
