@@ -6,7 +6,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 from vkbottle.bot import Bot, Message
 from vkbottle import Keyboard, KeyboardButtonColor, Text
-from vkbottle.dispatch.state import BaseStateDispenser
 
 # Загружаем переменные из .env
 load_dotenv()
@@ -24,18 +23,19 @@ if not VK_TOKEN:
     logger.error("❌ Токен не найден! Проверь переменные окружения")
     raise ValueError("VK_TOKEN is required")
 
-# Пустой state_dispenser, чтобы не было ошибки с immutable MessageMin
-class NoStateDispenser(BaseStateDispenser):
-    async def get(self, peer_id: int) -> None:
-        return None
-    async def set(self, peer_id: int, state: None) -> None:
-        pass
-    async def delete(self, peer_id: int) -> None:
-        pass
-    async def cast(self, value):   # ← добавлен этот метод
-        return None
+# Отключаем FSM через monkey patch
+from vkbottle.dispatch.views.abc.message import MessageView
 
-bot = Bot(token=VK_TOKEN, state_dispenser=NoStateDispenser())
+original_handle_event = MessageView.handle_event
+
+async def patched_handle_event(self, event, ctx_api, state_dispenser):
+    # Просто вызываем оригинал, но без присвоения state_peer
+    # state_dispenser игнорируем
+    return await original_handle_event(self, event, ctx_api, None)
+
+MessageView.handle_event = patched_handle_event
+
+bot = Bot(token=VK_TOKEN)
 
 # Файл для хранения данных пользователей
 USER_DATA_FILE = 'user_data.json'
