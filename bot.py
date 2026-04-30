@@ -24,6 +24,8 @@ if not VK_TOKEN:
     raise ValueError("VK_TOKEN is required")
 
 bot = Bot(token=VK_TOKEN)
+bot.state_dispenser = None  # отключаем FSM, так как он не используется
+bot.labeler.raw_handlers = []  # очищаем обработчики
 
 # Файл для хранения данных пользователей
 USER_DATA_FILE = 'user_data.json'
