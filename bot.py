@@ -75,8 +75,8 @@ def make_keyboard(buttons, one_time=False):
 def main_keyboard():
     return make_keyboard([
         ["📋 ОТЧЕТ О ПП"],
-        ["📚 ВКР"],
-        ["📝 ОБЩИЕ ТРЕБОВАНИЯ"],
+        ["📚 ВКР (в разработке)"],
+        ["📝 ОБЩИЕ ТРЕБОВАНИЯ (в разработке)"],
         ["📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ"]
     ])
 
@@ -495,12 +495,12 @@ def handle_message(user_id, text, first_name, last_name):
         send_message(user_id, "Выберите раздел ПП:", pp_keyboard())
         return
 
-    if text == "📝 ОБЩИЕ ТРЕБОВАНИЯ":
-        send_message(user_id, "Выберите раздел:", req_keyboard())
+    if text == "📝 ОБЩИЕ ТРЕБОВАНИЯ (в разработке)":
+        send_message(user_id, "📝 Раздел ОБЩИЕ ТРЕБОВАНИЯ находится в разработке", main_keyboard())
         return
 
-    if text == "📚 ВКР":
-        send_message(user_id, "📚 Раздел ВКР находится в разработке.\n\nСкоро здесь появятся материалы по написанию выпускной квалификационной работы.", main_keyboard())
+    if text == "📚 ВКР (в разработке)":
+        send_message(user_id, "📚 Раздел ВКР находится в разработке", main_keyboard())
         return
 
     if text == "📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ":
