@@ -6,6 +6,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from vkbottle.bot import Bot, Message
 from vkbottle import Keyboard, KeyboardButtonColor, Text
+from vkbottle.dispatch.state import BaseStateDispenser
 
 # Загружаем переменные из .env
 load_dotenv()
@@ -23,9 +24,16 @@ if not VK_TOKEN:
     logger.error("❌ Токен не найден! Проверь переменные окружения")
     raise ValueError("VK_TOKEN is required")
 
-bot = Bot(token=VK_TOKEN)
-bot.state_dispenser = None  # отключаем FSM, так как он не используется
-bot.labeler.raw_handlers = []  # очищаем обработчики
+# Пустой state_dispenser, чтобы не было ошибки с immutable MessageMin
+class NoStateDispenser(BaseStateDispenser):
+    async def get(self, peer_id: int) -> None:
+        return None
+    async def set(self, peer_id: int, state: None) -> None:
+        pass
+    async def delete(self, peer_id: int) -> None:
+        pass
+
+bot = Bot(token=VK_TOKEN, state_dispenser=NoStateDispenser())
 
 # Файл для хранения данных пользователей
 USER_DATA_FILE = 'user_data.json'
