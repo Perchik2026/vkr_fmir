@@ -18,9 +18,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Токен сообщества ВК
-VK_TOKEN = os.getenv('VK_TOKEN')
+VK_TOKEN = os.getenv('VK_TOKEN') or os.getenv('API_TOKEN') or os.getenv('BOT_API_TOKEN') or os.getenv('BOT_TOKEN')
 if not VK_TOKEN:
-    logger.error("❌ VK_TOKEN не найден в .env файле!")
+    logger.error("❌ Токен не найден! Проверь переменные окружения")
     raise ValueError("VK_TOKEN is required")
 
 bot = Bot(token=VK_TOKEN)
