@@ -72,7 +72,7 @@ def create_main_keyboard():
     keyboard.add_line()
     keyboard.add_button("📚 ВКР (в разработке)", color=VkKeyboardColor.SECONDARY)
     keyboard.add_line()
-    keyboard.add_button("📝 ОБЩИЕ ТРЕБОВАНИЯ (в разработке)", color=VkKeyboardColor.SECONDARY)
+    keyboard.add_button("📝 ОБЩИЕ ТРЕБОВАНИЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", color=VkKeyboardColor.PRIMARY)
     return keyboard
@@ -100,23 +100,28 @@ def create_pp_keyboard():
 
 def create_req_keyboard():
     keyboard = VkKeyboard(one_time=False)
-    keyboard.add_button("📚 Источники", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("📝 Ссылки в работе", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Эффект и Эффективность", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Источники", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📋 Список литературы", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("👨‍🏫 Публикации ППС", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Ссылки в работе", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Список литературы", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("🐦 Птичий язык", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("🐞 Слова-паразиты", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Цитирование", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Публикации ППС", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📝 Научный стиль", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("🚫 Запрещенные сети", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Птичий язык", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Слова-паразиты", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📄 Форматирование", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("🌐 Англицизмы", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Научный стиль", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Запрещенные сети", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("🔍 Проверка работ", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("🔗 Материалы по оформлению", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Форматирование текста", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Англицизмы", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Сроки проверки работ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Обозначения и сокращения", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Материалы по оформлению", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
@@ -148,8 +153,12 @@ class BotHandler:
             self.send_message(user_id, "Выберите раздел отчета о ПП:", create_pp_keyboard())
             return
         
-        if text in ["📝 ОБЩИЕ ТРЕБОВАНИЯ (в разработке)", "📚 ВКР (в разработке)"]:
-            self.send_message(user_id, f"📝 Раздел «{text}» находится в разработке", create_main_keyboard())
+        if text == "📝 ОБЩИЕ ТРЕБОВАНИЯ":
+            self.send_message(user_id, "Выберите раздел общих требований:", create_req_keyboard())
+            return
+        
+        if text == "📚 ВКР (в разработке)":
+            self.send_message(user_id, "📚 Раздел ВКР находится в разработке", create_main_keyboard())
             return
         
         if text == "📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ":
