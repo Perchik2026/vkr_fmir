@@ -8,7 +8,7 @@ import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 
-from texts import PP, REQ, AGREEMENT
+from texts import PP, REQ, AGREEMENT, VKR_GENERAL, VKR_CONTENT, VKR_ANTIPLAGIAT, VKR_GUIDE, VKR_REVIEW, VKR_PRESENTATION, VKR_DEFENSE
 
 load_dotenv()
 
@@ -70,11 +70,11 @@ def create_main_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("📋 ОТЧЕТ О ПП", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📚 ВКР", color=VkKeyboardColor.SECONDARY)
+    keyboard.add_button("📚 ВКР", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("📝 ОБЩИЕ ТРЕБОВАНИЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", color=VkKeyboardColor.SECONDARY)
+    keyboard.add_button("📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", color=VkKeyboardColor.PRIMARY)
     return keyboard
 
 
@@ -126,22 +126,25 @@ def create_req_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_main_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("ОБЩИЕ ПОЛОЖЕНИЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_button("СОДЕРЖАНИЕ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("АНТИПЛАГИАТ И ИИ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("РУКОВОДСТВО ВКР", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("ОТЗЫВ РУКОВОДИТЕЛЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_button("РЕЦЕНЗИРОВАНИЕ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
+    keyboard.add_button("ПРЕЗЕНТАЦИЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_button("ЗАЩИТА ВКР", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
-    
+
+
 def create_vkr_general_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Выбор темы ВКР", color=VkKeyboardColor.PRIMARY)
@@ -155,6 +158,7 @@ def create_vkr_general_keyboard():
     keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
+
 
 def create_vkr_content_keyboard():
     keyboard = VkKeyboard(one_time=False)
@@ -173,9 +177,11 @@ def create_vkr_content_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_antiplagiat_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Формальные требования", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Использование ИИ в работе", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Пример использования ИИ", color=VkKeyboardColor.PRIMARY)
@@ -184,21 +190,26 @@ def create_vkr_antiplagiat_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_guide_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Назначение научного руководителя", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Руководство написания ВКР", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Задание и план-график", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Отзыв научного руководителя", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_review_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Список документов для рецензента", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Сроки подачи ВКР на рецензию", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Рецензия на ВКР", color=VkKeyboardColor.PRIMARY)
@@ -207,9 +218,11 @@ def create_vkr_review_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_presentation_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Общие требования", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Содержание", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Пример презентации", color=VkKeyboardColor.PRIMARY)
@@ -218,12 +231,15 @@ def create_vkr_presentation_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+
 def create_vkr_defense_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("Комплект документов для сдачи на кафедру", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Сроки сдачи документов", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Распределение по комиссиям", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Процедура защиты", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
     keyboard.add_button("Апелляция", color=VkKeyboardColor.PRIMARY)
@@ -231,6 +247,7 @@ def create_vkr_defense_keyboard():
     keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
+
 
 class BotHandler:
     def __init__(self, vk_api_instance):
@@ -262,12 +279,11 @@ class BotHandler:
             self.send_message(user_id, "Выберите раздел общих требований:", create_req_keyboard())
             return
         
-        
         if text == "📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ":
             agreement_text = AGREEMENT.get("ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", AGREEMENT)
             self.send_message(user_id, agreement_text, create_main_keyboard())
             return
-        
+
         if text in PP:
             self.send_message(user_id, PP[text], create_pp_keyboard())
             return
@@ -297,8 +313,8 @@ class BotHandler:
             self.send_message(user_id, "Выберите пункт:", create_vkr_guide_keyboard())
             return
         
-        if text == "ОТЗЫВ РУКОВОДИТЕЛЯ":
-            self.send_message(user_id, "Выберите пункт:", create_vkr_review_keyboard())
+        if text == "ПРЕЗЕНТАЦИЯ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_presentation_keyboard())
             return
         
         if text == "РЕЦЕНЗИРОВАНИЕ":
@@ -312,8 +328,37 @@ class BotHandler:
         if text == "🔙 Назад в ВКР":
             self.send_message(user_id, "🎓 Возврат в меню ВКР:", create_vkr_main_keyboard())
             return
-
-            self.send_message(user_id, "❌ Неизвестная команда\n\nИспользуйте кнопки меню или напишите /start", create_main_keyboard())
+        
+        # Обработка текстов из словарей ВКР
+        if text in VKR_GENERAL:
+            self.send_message(user_id, VKR_GENERAL[text], create_vkr_general_keyboard())
+            return
+        
+        if text in VKR_CONTENT:
+            self.send_message(user_id, VKR_CONTENT[text], create_vkr_content_keyboard())
+            return
+        
+        if text in VKR_ANTIPLAGIAT:
+            self.send_message(user_id, VKR_ANTIPLAGIAT[text], create_vkr_antiplagiat_keyboard())
+            return
+        
+        if text in VKR_GUIDE:
+            self.send_message(user_id, VKR_GUIDE[text], create_vkr_guide_keyboard())
+            return
+        
+        if text in VKR_REVIEW:
+            self.send_message(user_id, VKR_REVIEW[text], create_vkr_review_keyboard())
+            return
+        
+        if text in VKR_PRESENTATION:
+            self.send_message(user_id, VKR_PRESENTATION[text], create_vkr_presentation_keyboard())
+            return
+        
+        if text in VKR_DEFENSE:
+            self.send_message(user_id, VKR_DEFENSE[text], create_vkr_defense_keyboard())
+            return
+        
+        self.send_message(user_id, "❌ Неизвестная команда\n\nИспользуйте кнопки меню или напишите /start", create_main_keyboard())
 
 
 def run_bot():
