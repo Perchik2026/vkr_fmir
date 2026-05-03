@@ -162,6 +162,8 @@ def create_vkr_general_keyboard():
 
 def create_vkr_content_keyboard():
     keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Требования к структуре", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
     keyboard.add_button("Введение", color=VkKeyboardColor.PRIMARY)
     keyboard.add_button("Глава 1", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
