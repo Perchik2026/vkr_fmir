@@ -126,6 +126,111 @@ def create_req_keyboard():
     keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
     return keyboard
 
+def create_vkr_main_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("ОБЩИЕ ПОЛОЖЕНИЯ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("СОДЕРЖАНИЕ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("АНТИПЛАГИАТ И ИИ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("РУКОВОДСТВО ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("ОТЗЫВ РУКОВОДИТЕЛЯ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("РЕЦЕНЗИРОВАНИЕ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("ЗАЩИТА ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+    
+def create_vkr_general_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Выбор темы ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Примеры тем ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Объект", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Предмет", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Сроки", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_content_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Введение", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Глава 1", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Глава 2", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Глава 3", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Заключение", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Список источников и литературы", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Приложения", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_antiplagiat_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Формальные требования", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Использование ИИ в работе", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Пример использования ИИ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_guide_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Назначение научного руководителя", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Руководство написания ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Задание и план-график", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Отзыв научного руководителя", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_review_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Список документов для рецензента", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Сроки подачи ВКР на рецензию", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Рецензия на ВКР", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_presentation_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Общие требования", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Содержание", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Пример презентации", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
+
+def create_vkr_defense_keyboard():
+    keyboard = VkKeyboard(one_time=False)
+    keyboard.add_button("Комплект документов для сдачи на кафедру", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Сроки сдачи документов", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Распределение по комиссиям", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Процедура защиты", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("Апелляция", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_line()
+    keyboard.add_button("🔙 Назад в ВКР", color=VkKeyboardColor.NEGATIVE)
+    keyboard.add_button("🔙 Главное меню", color=VkKeyboardColor.NEGATIVE)
+    return keyboard
 
 class BotHandler:
     def __init__(self, vk_api_instance):
@@ -157,9 +262,6 @@ class BotHandler:
             self.send_message(user_id, "Выберите раздел общих требований:", create_req_keyboard())
             return
         
-        if text == "📚 ВКР (в разработке)":
-            self.send_message(user_id, "📚 Раздел ВКР находится в разработке", create_main_keyboard())
-            return
         
         if text == "📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ":
             agreement_text = AGREEMENT.get("ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", AGREEMENT)
@@ -173,8 +275,45 @@ class BotHandler:
         if text in REQ:
             self.send_message(user_id, REQ[text], create_req_keyboard())
             return
+
+        if text == "📚 ВКР":
+            self.send_message(user_id, "🎓 Выберите раздел ВКР:", create_vkr_main_keyboard())
+            return
+
+        # Обработка кнопок меню ВКР
+        if text == "ОБЩИЕ ПОЛОЖЕНИЯ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_general_keyboard())
+            return
+
+        if text == "СОДЕРЖАНИЕ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_content_keyboard())
+            return
         
-        self.send_message(user_id, "❌ Неизвестная команда\n\nИспользуйте кнопки меню или напишите /start", create_main_keyboard())
+        if text == "АНТИПЛАГИАТ И ИИ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_antiplagiat_keyboard())
+            return
+        
+        if text == "РУКОВОДСТВО ВКР":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_guide_keyboard())
+            return
+        
+        if text == "ОТЗЫВ РУКОВОДИТЕЛЯ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_review_keyboard())
+            return
+        
+        if text == "РЕЦЕНЗИРОВАНИЕ":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_review_keyboard())
+            return
+        
+        if text == "ЗАЩИТА ВКР":
+            self.send_message(user_id, "Выберите пункт:", create_vkr_defense_keyboard())
+            return
+        
+        if text == "🔙 Назад в ВКР":
+            self.send_message(user_id, "🎓 Возврат в меню ВКР:", create_vkr_main_keyboard())
+            return
+
+            self.send_message(user_id, "❌ Неизвестная команда\n\nИспользуйте кнопки меню или напишите /start", create_main_keyboard())
 
 
 def run_bot():
