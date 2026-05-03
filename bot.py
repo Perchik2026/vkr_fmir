@@ -70,11 +70,11 @@ def create_main_keyboard():
     keyboard = VkKeyboard(one_time=False)
     keyboard.add_button("📋 ОТЧЕТ О ПП", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📚 ВКР (в разработке)", color=VkKeyboardColor.SECONDARY)
+    keyboard.add_button("📚 ВКР", color=VkKeyboardColor.SECONDARY)
     keyboard.add_line()
     keyboard.add_button("📝 ОБЩИЕ ТРЕБОВАНИЯ", color=VkKeyboardColor.PRIMARY)
     keyboard.add_line()
-    keyboard.add_button("📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("📄 ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", color=VkKeyboardColor.SECONDARY)
     return keyboard
 
 
